@@ -1,0 +1,34 @@
+commit f6262cddacfb30945fb0ecc80493156a0000c2e3
+Author: tnut <tnut at nutyx dot org>
+Date:   Sun Oct 9 18:29:53 2016 +0200
+
+    corex mkinitramfs et init.in pour le support extUSB
+
+diff --git a/scripts/mkinitramfs.in b/scripts/mkinitramfs.in
+index e341d86..b7769c4 100755
+--- a/scripts/mkinitramfs.in
++++ b/scripts/mkinitramfs.in
+@@ -244,6 +244,7 @@ chmod 755 $WDIR/lib/udev/do_start_clock
+ # Install the kernel modules if requested
+ if [ -n "$KERNEL_VERSION" ]; then
+   for i in dm-mod md-mod ehci-pci usbcore \
++xhci-pci xhci-hcd \
+ ehci-hcd uhci-hcd usbcore uas \
+ usbcore usb-storage usb-common \
+ usb-storage usbcore loop sr_mod \
+diff --git a/tools/lib/init.in b/tools/lib/init.in
+index 588ae9f..41e2d3f 100644
+--- a/tools/lib/init.in
++++ b/tools/lib/init.in
+@@ -143,7 +143,10 @@ MainLoop(){
+    clear
+ }
+ LoadModules() {
+- for i in dm-mod md-mod ehci-pci uhci-hcd uas sr_mod usb-storage loop squashfs isofs
++ for i in dm-mod md-mod ehci-pci \
++ xhci-pci xhci-hcd ehci-hcd \
++ uhci-hcd uas sr_mod usb-storage loop \
++ squashfs isofs
+  do
+   if [ "$verbose" == "yes" ]; then
+     modprobe -v $i
