@@ -1,0 +1,3 @@
+. lib/lsb/init-functions
+log_warning_msg "${WARNING} Make shure to add yourself to the netdev group ${NORMAL}"
+log_info_msg "${INFO}/sbin/usermod -a -G netdev <username> ${NORMAL}\n"
