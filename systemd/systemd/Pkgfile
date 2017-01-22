@@ -6,8 +6,8 @@ url="http://www.freedesktop.org/wiki/Software/systemd"
 packager="tnut at nutyx dot org"
 
 name=systemd
-version=231
-release=2
+version=232
+release=1
 
 PKGMK_GROUPS=(devel doc man lib)
 PKGMK_KEEP_SOURCES="no"
